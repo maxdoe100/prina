@@ -723,7 +723,7 @@ export default function OptionsTracker() {
         if (trade.type === "Put" && trade.side === "STO" && trade.strikePrice) {
           // Assigned on short put - must buy stock
           cashImpact -= trade.strikePrice * 100 * contractsCount
-        } else if (actionType === "Call" && trade.side === "STO" && trade.strikePrice) {
+        } else if (trade.type === "Call" && trade.side === "STO" && trade.strikePrice) {
           // Assigned on short call - must sell stock
           cashImpact += trade.strikePrice * 100 * contractsCount
         }
@@ -1576,13 +1576,14 @@ export default function OptionsTracker() {
                   )}
                 </div>
               </div>
+            </div>
 
             <div className="flex gap-3">
               <Button 
                 onClick={() => {
                   // Update stock purchase data if modified
                   if (stockPurchase && stockPrice && stockShares) {
-                    setTradeSummaryData(prev => ({
+                    setTradeSummaryData((prev: any) => ({
                       ...prev,
                       stockPurchase: {
                         shares: Number.parseInt(stockShares),
@@ -1610,12 +1611,12 @@ export default function OptionsTracker() {
     )
   }
 
-  const getFilteredTrades = () => {\
+  const getFilteredTrades = () => {
     const now = new Date()
     const cutoffDate = new Date()
 
     switch (timeframe) {
-      case "1M":\
+      case "1M":
         cutoffDate.setMonth(now.getMonth() - 1)
         break
       case "3M":
@@ -1633,7 +1634,7 @@ export default function OptionsTracker() {
     return trades.filter((trade) => new Date(trade.startDate) >= cutoffDate)
   }
 
-  const getFilteredPremium = () => {\
+  const getFilteredPremium = () => {
     const filteredTrades = getFilteredTrades()
     return filteredTrades
       .filter((trade) => trade.side === "STO" && trade.premium > 0)
@@ -2217,5 +2218,5 @@ export default function OptionsTracker() {
       <SettingsDialog />
       <PricingModal />
     </div>
-  )\
+  )
 }

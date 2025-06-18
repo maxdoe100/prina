@@ -218,3 +218,10 @@ export default function AuthPage() {
         </Card>
 
         {/* Features Preview */}
+        <div className="text-center text-xs text-muted-foreground">
+          <p>Start tracking your options trades with professional-grade tools</p>
+        </div>
+      </div>
+    </div>
+  )
+}
