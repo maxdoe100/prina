@@ -7,7 +7,7 @@ import { Search, HelpCircle, BarChart3, TrendingUp, Shield, Zap, Target, Users, 
 import CardSwap, { Card as AnimatedCard } from "@/components/CardSwap"
 
 export default function LandingPage() {
-  return (
+      return (
     <div className="flex flex-col min-h-screen">
       {/* Top Bar */}
       <div className="bg-black text-white px-4 py-2">
@@ -23,15 +23,15 @@ export default function LandingPage() {
             <HelpCircle className="h-4 w-4" />
             Help Center
           </Link>
-        </div>
-      </div>
+                </div>
+              </div>
 
       {/* Header */}
       <header className="bg-white border-b border-gray-200 px-4 lg:px-6 h-16 flex items-center justify-between">
         <Link href="#" className="flex items-center justify-center" prefetch={false}>
           <div className="w-8 h-8 bg-red-500 rounded-full flex items-center justify-center">
             <TrendingUp className="h-5 w-5 text-white" />
-          </div>
+              </div>
           <span className="ml-2 text-xl font-bold text-black">prina</span>
         </Link>
         <nav className="hidden md:flex gap-8">
@@ -71,18 +71,18 @@ export default function LandingPage() {
                     Unlock advanced performance analytics and take control of your trading success with 
                     <span className="text-white font-semibold"> enterprise-grade tools</span> used by professionals.
                   </p>
-                </div>
-                
-                <div className="space-y-4">
+              </div>
+
+          <div className="space-y-4">
                   <Link href="/auth">
                     <Button className="bg-red-500 hover:bg-red-600 text-white px-8 py-4 rounded-full text-lg font-semibold shadow-lg hover:shadow-red-500/25 transition-all duration-300">
                       Start Free Trial
-                    </Button>
+              </Button>
                   </Link>
                   <div className="flex items-center gap-2 text-gray-400 text-sm">
                     <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
                     <span>No credit card required • 14-day free trial</span>
-                  </div>
+            </div>
                 </div>
 
                 {/* Trust Indicators */}
@@ -92,18 +92,18 @@ export default function LandingPage() {
                     <div className="text-center">
                       <div className="text-2xl font-bold text-white">99.9%</div>
                       <div className="text-xs text-gray-400">Uptime</div>
-                    </div>
+                </div>
                     <div className="text-center">
                       <div className="text-2xl font-bold text-white">$2.1B+</div>
                       <div className="text-xs text-gray-400">Tracked</div>
-                    </div>
+              </div>
                     <div className="text-center">
                       <div className="text-2xl font-bold text-white">35%</div>
                       <div className="text-xs text-gray-400">Avg Improvement</div>
-                    </div>
+                </div>
+                  </div>
                   </div>
                 </div>
-              </div>
 
               {/* Right Column - Animated Cards */}
               <div className="relative h-[600px] flex items-center justify-center">
@@ -120,37 +120,37 @@ export default function LandingPage() {
                     <div className="flex flex-col items-center text-center space-y-4">
                       <div className="p-3 rounded-full bg-red-500/20">
                         <Target className="h-8 w-8 text-red-400" />
-                      </div>
+            </div>
                       <h3 className="text-xl font-bold">Precision Analytics</h3>
                       <p className="text-gray-300 text-sm leading-relaxed">
                         AI-powered algorithms analyze your trading patterns and provide actionable insights for optimal performance and risk management.
                       </p>
-                    </div>
+            </div>
                   </AnimatedCard>
                   <AnimatedCard className="p-6 text-white bg-gradient-to-br from-gray-900 to-black border-gray-700 shadow-2xl">
                     <div className="flex flex-col items-center text-center space-y-4">
                       <div className="p-3 rounded-full bg-blue-500/20">
                         <Users className="h-8 w-8 text-blue-400" />
-                      </div>
+          </div>
                       <h3 className="text-xl font-bold">Elite Community</h3>
                       <p className="text-gray-300 text-sm leading-relaxed">
                         Connect with successful traders sharing strategies and insights in our exclusive, verified community of professionals.
                       </p>
-                    </div>
+            </div>
                   </AnimatedCard>
                   <AnimatedCard className="p-6 text-white bg-gradient-to-br from-gray-900 to-black border-gray-700 shadow-2xl">
                     <div className="flex flex-col items-center text-center space-y-4">
                       <div className="p-3 rounded-full bg-yellow-500/20">
                         <Award className="h-8 w-8 text-yellow-400" />
-                      </div>
+            </div>
                       <h3 className="text-xl font-bold">Proven Results</h3>
                       <p className="text-gray-300 text-sm leading-relaxed">
                         Track record of helping traders improve performance by 35% average within 90 days using our advanced analytics platform.
                       </p>
-                    </div>
+              </div>
                   </AnimatedCard>
                 </CardSwap>
-              </div>
+          </div>
             </div>
           </div>
 
@@ -168,7 +168,7 @@ export default function LandingPage() {
             <div className="text-center mb-16">
               <div className="inline-flex items-center px-4 py-2 rounded-full bg-gray-100 border border-gray-200 mb-6">
                 <span className="text-gray-600 text-sm font-medium">Complete Trading Solution</span>
-              </div>
+                </div>
               <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
                 Everything you need to
                 <span className="block text-red-500">optimize your trading</span>
@@ -184,7 +184,7 @@ export default function LandingPage() {
                   <CardContent className="p-8">
                     <div className="p-3 rounded-lg bg-red-50 w-fit mb-6 group-hover:bg-red-100 transition-colors">
                       <BarChart3 className="h-8 w-8 text-red-500" />
-                    </div>
+              </div>
                     <h3 className="text-xl font-bold text-gray-900 mb-4">Advanced Analytics</h3>
                     <p className="text-gray-600 leading-relaxed mb-4">
                       AI-powered performance analysis with predictive insights and risk assessment tools.
@@ -192,14 +192,14 @@ export default function LandingPage() {
                     <div className="text-sm text-red-500 font-medium">Real-time processing</div>
                   </CardContent>
                 </Card>
-              </div>
+            </div>
 
               <div className="group">
                 <Card className="bg-white border border-gray-200 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 h-full">
                   <CardContent className="p-8">
                     <div className="p-3 rounded-lg bg-blue-50 w-fit mb-6 group-hover:bg-blue-100 transition-colors">
                       <TrendingUp className="h-8 w-8 text-blue-500" />
-                    </div>
+            </div>
                     <h3 className="text-xl font-bold text-gray-900 mb-4">Portfolio Tracking</h3>
                     <p className="text-gray-600 leading-relaxed mb-4">
                       Comprehensive portfolio management with automated trade tracking and P&L calculations.
@@ -207,21 +207,21 @@ export default function LandingPage() {
                     <div className="text-sm text-blue-500 font-medium">Auto-sync enabled</div>
                   </CardContent>
                 </Card>
-              </div>
+          </div>
 
               <div className="group">
                 <Card className="bg-white border border-gray-200 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 h-full">
                   <CardContent className="p-8">
                     <div className="p-3 rounded-lg bg-green-50 w-fit mb-6 group-hover:bg-green-100 transition-colors">
                       <Shield className="h-8 w-8 text-green-500" />
-                    </div>
+            </div>
                     <h3 className="text-xl font-bold text-gray-900 mb-4">Bank-Level Security</h3>
                     <p className="text-gray-600 leading-relaxed mb-4">
                       Enterprise-grade encryption and security protocols protecting your sensitive trading data.
                     </p>
                     <div className="text-sm text-green-500 font-medium">256-bit encryption</div>
-                  </CardContent>
-                </Card>
+            </CardContent>
+          </Card>
               </div>
 
               <div className="group">
@@ -229,17 +229,17 @@ export default function LandingPage() {
                   <CardContent className="p-8">
                     <div className="p-3 rounded-lg bg-purple-50 w-fit mb-6 group-hover:bg-purple-100 transition-colors">
                       <Zap className="h-8 w-8 text-purple-500" />
-                    </div>
+            </div>
                     <h3 className="text-xl font-bold text-gray-900 mb-4">Real-Time Data</h3>
                     <p className="text-gray-600 leading-relaxed mb-4">
                       Live market data integration with instant notifications and alerts for optimal timing.
                     </p>
                     <div className="text-sm text-purple-500 font-medium">Sub-second latency</div>
-                  </CardContent>
-                </Card>
+            </CardContent>
+          </Card>
+        </div>
               </div>
-            </div>
-          </div>
+                </div>
         </section>
 
         {/* CTA Section */}
@@ -256,38 +256,38 @@ export default function LandingPage() {
                     Join over 10,000 professional traders who've transformed their performance with Prina's 
                     advanced analytics platform.
                   </p>
-                </div>
+                  </div>
 
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                   <Link href="/auth">
                     <Button className="bg-red-500 hover:bg-red-600 text-white px-8 py-4 rounded-full text-lg font-semibold shadow-lg hover:shadow-red-500/25 transition-all duration-300 min-w-[200px]">
                       Start Free Trial
-                    </Button>
+              </Button>
                   </Link>
                   <Link href="/dashboard">
                     <Button variant="outline" className="border-white/20 text-white hover:bg-white/10 px-8 py-4 rounded-full text-lg font-semibold min-w-[200px]">
                       View Demo
-                    </Button>
+              </Button>
                   </Link>
-                </div>
+            </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-12 border-t border-gray-800">
                   <div className="text-center">
                     <div className="text-3xl font-bold text-white mb-2">14 Days</div>
                     <div className="text-gray-400">Free Trial</div>
-                  </div>
+              </div>
                   <div className="text-center">
                     <div className="text-3xl font-bold text-white mb-2">No Risk</div>
                     <div className="text-gray-400">Cancel Anytime</div>
-                  </div>
+            </div>
                   <div className="text-center">
                     <div className="text-3xl font-bold text-white mb-2">24/7</div>
                     <div className="text-gray-400">Expert Support</div>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
+        </div>
+                  </div>
+                  </div>
         </section>
       </main>
 
@@ -300,16 +300,16 @@ export default function LandingPage() {
               <Link href="/" className="flex items-center">
                 <div className="w-8 h-8 bg-red-500 rounded-full flex items-center justify-center">
                   <TrendingUp className="h-5 w-5 text-white" />
-                </div>
+                  </div>
                 <span className="ml-2 text-xl font-bold text-white">prina</span>
               </Link>
               <p className="text-gray-400 text-sm leading-relaxed">
                 Professional trading analytics platform trusted by thousands of traders worldwide.
               </p>
-            </div>
+                  </div>
 
             {/* Product */}
-            <div>
+                  <div>
               <h3 className="text-white font-semibold mb-4">Product</h3>
               <nav className="space-y-2">
                 <Link href="/dashboard" className="text-gray-400 hover:text-white text-sm block transition-colors">
@@ -325,10 +325,10 @@ export default function LandingPage() {
                   API
                 </Link>
               </nav>
-            </div>
+                </div>
 
             {/* Company */}
-            <div>
+                  <div>
               <h3 className="text-white font-semibold mb-4">Company</h3>
               <nav className="space-y-2">
                 <Link href="#" className="text-gray-400 hover:text-white text-sm block transition-colors">
@@ -344,10 +344,10 @@ export default function LandingPage() {
                   Contact
                 </Link>
               </nav>
-            </div>
+                  </div>
 
             {/* Legal */}
-            <div>
+                    <div>
               <h3 className="text-white font-semibold mb-4">Legal</h3>
               <nav className="space-y-2">
                 <Link href="#" className="text-gray-400 hover:text-white text-sm block transition-colors">
@@ -363,8 +363,8 @@ export default function LandingPage() {
                   GDPR
                 </Link>
               </nav>
-            </div>
-          </div>
+                    </div>
+                    </div>
 
           <div className="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
             <p className="text-sm text-gray-400">&copy; 2025 Prina. All rights reserved.</p>
@@ -374,9 +374,9 @@ export default function LandingPage() {
               <span className="text-sm text-gray-400">GDPR Ready</span>
               <div className="w-1 h-1 bg-gray-600 rounded-full"></div>
               <span className="text-sm text-gray-400">ISO 27001</span>
-            </div>
-          </div>
-        </div>
+                  </div>
+                  </div>
+                </div>
       </footer>
     </div>
   )
