@@ -657,7 +657,7 @@ export default function OptionsTracker() {
   }
 
   const getPLColor = (value: number) => {
-    return value >= 0 ? "text-green-600" : "text-red-600"
+    return value >= 0 ? "text-green-400" : "text-red-400"
   }
 
   const formatTradeNomenclature = (trade: Trade, includePrice = true) => {
@@ -1830,29 +1830,41 @@ export default function OptionsTracker() {
   }
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900">
       {/* Header */}
-      <header className="bg-background/80 backdrop-blur-sm border-b border-border sticky top-0 z-50">
+      <header className="bg-gray-900/80 backdrop-blur-sm border-b border-gray-800 sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 rounded-lg flex items-center justify-center bg-red-600">
+            <div className="flex items-center space-x-3">
+              <div className="w-10 h-10 rounded-full flex items-center justify-center bg-red-500 shadow-lg">
                 <TrendingUp className="w-5 h-5 text-white" />
               </div>
-              <h1 className="text-xl font-bold">Prina - Premium Income App</h1>
+              <div>
+                <h1 className="text-xl font-bold text-white">prina</h1>
+                <p className="text-xs text-gray-400">Trading Analytics Dashboard</p>
+              </div>
             </div>
-            <div className="flex items-center gap-2">
-              <Button variant="ghost" size="icon" onClick={() => setTheme(theme === "dark" ? "light" : "dark")}>
+            <div className="flex items-center gap-3">
+              <Button 
+                variant="ghost" 
+                size="icon" 
+                onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                className="text-gray-400 hover:text-white hover:bg-gray-800"
+              >
                 <Sun className="h-5 w-5 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
                 <Moon className="absolute h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
               </Button>
-              <Button variant="ghost" size="icon" onClick={() => setShowSettings(true)}>
+              <Button 
+                variant="ghost" 
+                size="icon" 
+                onClick={() => setShowSettings(true)}
+                className="text-gray-400 hover:text-white hover:bg-gray-800"
+              >
                 <Settings className="w-5 h-5" />
               </Button>
               <Button
-                variant="secondary"
                 onClick={() => router.push("/auth")}
-                className="bg-red-600 hover:bg-red-700 text-white"
+                className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg font-semibold shadow-lg hover:shadow-red-500/25 transition-all duration-300"
               >
                 Open Account
               </Button>
@@ -1861,51 +1873,53 @@ export default function OptionsTracker() {
         </div>
       </header>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
           {/* Left Sidebar */}
           <div className="lg:col-span-1 space-y-6">
             {/* Portfolio Overview */}
-            <Card className="border-red-200 dark:border-red-800">
+            <Card className="bg-gray-900/50 border-gray-800 shadow-lg backdrop-blur-sm">
               <CardHeader className="pb-3">
-                <CardTitle className="text-lg font-semibold flex items-center gap-2">
-                  <Wallet className="w-5 h-5" />
+                <CardTitle className="text-lg font-semibold flex items-center gap-2 text-white">
+                  <div className="p-2 rounded-lg bg-red-500/20">
+                    <Wallet className="w-5 h-5 text-red-400" />
+                  </div>
                   Portfolio Overview
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
-                <div className="space-y-3">
+                <div className="space-y-4">
                   <div className="flex justify-between items-center">
-                    <span className="text-sm font-medium">Portfolio Value</span>
-                    <span className="font-bold text-lg">{formatCurrency(portfolioValue)}</span>
+                    <span className="text-sm font-medium text-gray-300">Portfolio Value</span>
+                    <span className="font-bold text-lg text-white">{formatCurrency(portfolioValue)}</span>
                   </div>
                   <div className="flex justify-between items-center">
-                    <span className="text-sm">Available Cash</span>
+                    <span className="text-sm text-gray-300">Available Cash</span>
                     <Button
                       variant="ghost"
                       size="sm"
                       onClick={() => setShowCashModal(true)}
-                      className="font-semibold hover:bg-muted"
+                      className="font-semibold text-white hover:bg-gray-800 hover:text-white"
                     >
                       {formatCurrency(cash)}
                     </Button>
                   </div>
                   <div className="flex justify-between items-center">
-                    <span className="text-sm flex items-center gap-1">
+                    <span className="text-sm flex items-center gap-1 text-gray-300">
                       <Lock className="w-3 h-3" />
                       Locked Collateral
                     </span>
-                    <span className="font-semibold">{formatCurrency(lockedCollateral)}</span>
+                    <span className="font-semibold text-white">{formatCurrency(lockedCollateral)}</span>
                   </div>
                 </div>
 
-                <Separator />
+                <Separator className="bg-gray-700" />
 
-                <div className="space-y-2">
+                <div className="space-y-3">
                   <div className="flex justify-between items-center">
-                    <span className="text-sm font-medium">Premium Collected</span>
+                    <span className="text-sm font-medium text-gray-300">Premium Collected</span>
                     <Select value={timeframe} onValueChange={setTimeframe}>
-                      <SelectTrigger className="w-16 h-6 text-xs bg-red-600 text-white border-red-600">
+                      <SelectTrigger className="w-16 h-6 text-xs bg-red-500 text-white border-red-500 hover:bg-red-600">
                         <SelectValue />
                       </SelectTrigger>
                       <SelectContent>
@@ -1915,7 +1929,7 @@ export default function OptionsTracker() {
                       </SelectContent>
                     </Select>
                   </div>
-                  <div className="text-xl font-bold text-green-600 flex items-center gap-1">
+                  <div className="text-xl font-bold text-green-400 flex items-center gap-1">
                     <ArrowUpRight className="w-4 h-4" />
                     {formatCurrency(getFilteredPremium())}
                   </div>
@@ -1924,17 +1938,19 @@ export default function OptionsTracker() {
             </Card>
 
             {/* Add New Trade */}
-            <Card>
+            <Card className="bg-gray-900/50 border-gray-800 shadow-lg backdrop-blur-sm">
               <CardHeader className="pb-3">
-                <CardTitle className="text-lg font-semibold flex items-center gap-2">
-                  <Plus className="w-5 h-5" />
+                <CardTitle className="text-lg font-semibold flex items-center gap-2 text-white">
+                  <div className="p-2 rounded-lg bg-red-500/20">
+                    <Plus className="w-5 h-5 text-red-400" />
+                  </div>
                   New Trade
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="grid grid-cols-2 gap-3">
                   <div>
-                    <Label htmlFor="symbol" className="text-xs font-medium">
+                    <Label htmlFor="symbol" className="text-xs font-medium text-gray-300">
                       Symbol
                     </Label>
                     <Input
@@ -1942,11 +1958,11 @@ export default function OptionsTracker() {
                       placeholder="AAPL"
                       value={newTrade.symbol}
                       onChange={(e) => setNewTrade({ ...newTrade, symbol: e.target.value.toUpperCase() })}
-                      className="h-8 text-sm"
+                      className="h-8 text-sm bg-gray-800 border-gray-700 text-white placeholder-gray-500 focus:border-red-500"
                     />
                   </div>
                   <div>
-                    <Label htmlFor="type" className="text-xs font-medium">
+                    <Label htmlFor="type" className="text-xs font-medium text-gray-300">
                       Type
                     </Label>
                     <Select
@@ -1955,7 +1971,7 @@ export default function OptionsTracker() {
                         setNewTrade({ ...newTrade, type: value, side: value === "Stock" ? "BTO" : "STO" });
                       }}
                     >
-                      <SelectTrigger className="h-8 text-sm">
+                      <SelectTrigger className="h-8 text-sm bg-gray-800 border-gray-700 text-white">
                         <SelectValue />
                       </SelectTrigger>
                       <SelectContent>
@@ -1969,14 +1985,14 @@ export default function OptionsTracker() {
 
                 {newTrade.type === "Stock" && (
                   <div>
-                    <Label htmlFor="stockAction" className="text-xs font-medium">
+                    <Label htmlFor="stockAction" className="text-xs font-medium text-gray-300">
                       Action
                     </Label>
                     <Select
                       value={newTrade.stockAction}
                       onValueChange={(value: "Buy" | "Sell") => setNewTrade({ ...newTrade, stockAction: value, side: value === "Buy" ? "BTO" : "STO" })}
                     >
-                      <SelectTrigger className="h-8 text-sm">
+                      <SelectTrigger className="h-8 text-sm bg-gray-800 border-gray-700 text-white">
                         <SelectValue />
                       </SelectTrigger>
                       <SelectContent>
@@ -1990,14 +2006,14 @@ export default function OptionsTracker() {
                 {newTrade.type !== "Stock" && (
                   <div className="grid grid-cols-2 gap-3">
                     <div>
-                      <Label htmlFor="side" className="text-xs font-medium">
+                      <Label htmlFor="side" className="text-xs font-medium text-gray-300">
                         Side
                       </Label>
                       <Select
                         value={newTrade.side}
                         onValueChange={(value: "STO" | "BTO") => setNewTrade({ ...newTrade, side: value })}
                       >
-                        <SelectTrigger className="h-8 text-sm">
+                        <SelectTrigger className="h-8 text-sm bg-gray-800 border-gray-700 text-white">
                           <SelectValue />
                         </SelectTrigger>
                         <SelectContent>
@@ -2007,7 +2023,7 @@ export default function OptionsTracker() {
                       </Select>
                     </div>
                     <div>
-                      <Label htmlFor="strike" className="text-xs font-medium">
+                      <Label htmlFor="strike" className="text-xs font-medium text-gray-300">
                         Strike
                       </Label>
                       <Input
@@ -2015,7 +2031,7 @@ export default function OptionsTracker() {
                         placeholder="185"
                         value={newTrade.strikePrice}
                         onChange={(e) => setNewTrade({ ...newTrade, strikePrice: e.target.value })}
-                        className="h-8 text-sm"
+                        className="h-8 text-sm bg-gray-800 border-gray-700 text-white placeholder-gray-500 focus:border-red-500"
                       />
                     </div>
                   </div>
@@ -2023,7 +2039,7 @@ export default function OptionsTracker() {
 
                 <div className="grid grid-cols-2 gap-3">
                   <div>
-                    <Label htmlFor="startDate" className="text-xs font-medium">
+                    <Label htmlFor="startDate" className="text-xs font-medium text-gray-300">
                       Start Date
                     </Label>
                     <Input
@@ -2031,11 +2047,11 @@ export default function OptionsTracker() {
                       type="date"
                       value={newTrade.startDate}
                       onChange={(e) => setNewTrade({ ...newTrade, startDate: e.target.value })}
-                      className="h-8 text-sm"
+                      className="h-8 text-sm bg-gray-800 border-gray-700 text-white placeholder-gray-500 focus:border-red-500"
                     />
                   </div>
                   <div>
-                    <Label htmlFor="price" className="text-xs font-medium">
+                    <Label htmlFor="price" className="text-xs font-medium text-gray-300">
                       {newTrade.type === "Stock" ? "Price per share" : "Price"}
                     </Label>
                     <Input
@@ -2043,14 +2059,14 @@ export default function OptionsTracker() {
                       placeholder={newTrade.type === "Stock" ? "178.45" : "2.50"}
                       value={newTrade.price}
                       onChange={(e) => setNewTrade({ ...newTrade, price: e.target.value })}
-                      className="h-8 text-sm"
+                      className="h-8 text-sm bg-gray-800 border-gray-700 text-white placeholder-gray-500 focus:border-red-500"
                     />
                   </div>
                 </div>
 
                 <div className="grid grid-cols-2 gap-3">
                   <div>
-                    <Label htmlFor="contracts" className="text-xs font-medium">
+                    <Label htmlFor="contracts" className="text-xs font-medium text-gray-300">
                       {newTrade.type === "Stock" ? "Shares" : "Contracts"}
                     </Label>
                     <Input
@@ -2058,11 +2074,11 @@ export default function OptionsTracker() {
                       placeholder="1"
                       value={newTrade.contracts}
                       onChange={(e) => setNewTrade({ ...newTrade, contracts: e.target.value })}
-                      className="h-8 text-sm"
+                      className="h-8 text-sm bg-gray-800 border-gray-700 text-white placeholder-gray-500 focus:border-red-500"
                     />
                   </div>
                   <div>
-                    <Label htmlFor="commission" className="text-xs font-medium">
+                    <Label htmlFor="commission" className="text-xs font-medium text-gray-300">
                       Commission
                     </Label>
                     <Input
@@ -2070,14 +2086,14 @@ export default function OptionsTracker() {
                       placeholder="1.00"
                       value={newTrade.commission}
                       onChange={(e) => setNewTrade({ ...newTrade, commission: e.target.value })}
-                      className="h-8 text-sm"
+                      className="h-8 text-sm bg-gray-800 border-gray-700 text-white placeholder-gray-500 focus:border-red-500"
                     />
                   </div>
                 </div>
 
                 {newTrade.type !== "Stock" && (
                   <div>
-                    <Label htmlFor="expiration" className="text-xs font-medium">
+                    <Label htmlFor="expiration" className="text-xs font-medium text-gray-300">
                       Expiration
                     </Label>
                     <Input
@@ -2085,7 +2101,7 @@ export default function OptionsTracker() {
                       type="date"
                       value={newTrade.expirationDate}
                       onChange={(e) => setNewTrade({ ...newTrade, expirationDate: e.target.value })}
-                      className="h-8 text-sm"
+                      className="h-8 text-sm bg-gray-800 border-gray-700 text-white placeholder-gray-500 focus:border-red-500"
                     />
                   </div>
                 )}
@@ -2098,8 +2114,9 @@ export default function OptionsTracker() {
                           id="covered"
                           checked={newTrade.covered}
                           onCheckedChange={(checked) => setNewTrade({ ...newTrade, covered: checked })}
+                          className="data-[state=checked]:bg-red-500"
                         />
-                        <Label htmlFor="covered" className="text-xs">
+                        <Label htmlFor="covered" className="text-xs text-gray-300">
                           Covered Call
                         </Label>
                       </div>
@@ -2110,8 +2127,9 @@ export default function OptionsTracker() {
                           id="secured"
                           checked={newTrade.secured}
                           onCheckedChange={(checked) => setNewTrade({ ...newTrade, secured: checked })}
+                          className="data-[state=checked]:bg-red-500"
                         />
-                        <Label htmlFor="secured" className="text-xs">
+                        <Label htmlFor="secured" className="text-xs text-gray-300">
                           Cash Secured
                         </Label>
                       </div>
@@ -2120,7 +2138,7 @@ export default function OptionsTracker() {
                 )}
 
                 <div>
-                  <Label htmlFor="notes" className="text-xs font-medium">
+                  <Label htmlFor="notes" className="text-xs font-medium text-gray-300">
                     Notes
                   </Label>
                   <Textarea
@@ -2128,21 +2146,21 @@ export default function OptionsTracker() {
                     placeholder="Optional notes..."
                     value={newTrade.notes}
                     onChange={(e) => setNewTrade({ ...newTrade, notes: e.target.value })}
-                    className="h-16 text-sm resize-none"
+                    className="h-16 text-sm resize-none bg-gray-800 border-gray-700 text-white placeholder-gray-500 focus:border-red-500"
                   />
                 </div>
 
                 <div className="flex gap-2">
                   <Button
                     onClick={handleAddTrade}
-                    className="flex-1 h-8 text-sm bg-red-600 hover:bg-red-700 text-white"
+                    className="flex-1 h-8 text-sm bg-red-500 hover:bg-red-600 text-white shadow-lg hover:shadow-red-500/25 transition-all duration-300"
                   >
                     Add Trade
                   </Button>
                   <Button
                     onClick={clearForm}
                     variant="outline"
-                    className="h-8 text-sm border-red-600 text-red-600 hover:bg-red-50"
+                    className="h-8 text-sm border-gray-600 text-gray-300 hover:bg-gray-800 hover:text-white"
                   >
                     Clear
                   </Button>
@@ -2155,11 +2173,11 @@ export default function OptionsTracker() {
           <div className="lg:col-span-3">
             <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
               <div className="flex justify-between items-center">
-                <TabsList className="grid w-full max-w-md grid-cols-2">
-                  <TabsTrigger value="positions">Positions</TabsTrigger>
-                  <TabsTrigger value="trades">Trades</TabsTrigger>
+                <TabsList className="grid w-full max-w-md grid-cols-2 bg-gray-900/50 border-gray-800">
+                  <TabsTrigger value="positions" className="text-gray-300 data-[state=active]:text-white data-[state=active]:bg-red-500">Positions</TabsTrigger>
+                  <TabsTrigger value="trades" className="text-gray-300 data-[state=active]:text-white data-[state=active]:bg-red-500">Trades</TabsTrigger>
                 </TabsList>
-                <div className="flex gap-2">
+                <div className="flex gap-3">
                   <Button
                     variant="outline"
                     size="sm"
@@ -2167,7 +2185,7 @@ export default function OptionsTracker() {
                       setCashAction("deposit")
                       setShowCashModal(true)
                     }}
-                    className="border-red-600 text-red-600 hover:bg-red-50"
+                    className="border-gray-600 text-gray-300 hover:bg-gray-800 hover:text-white hover:border-red-500"
                   >
                     <ArrowDownLeft className="w-4 h-4 mr-2" />
                     Deposit
@@ -2179,7 +2197,7 @@ export default function OptionsTracker() {
                       setCashAction("withdraw")
                       setShowCashModal(true)
                     }}
-                    className="border-red-600 text-red-600 hover:bg-red-50"
+                    className="border-gray-600 text-gray-300 hover:bg-gray-800 hover:text-white hover:border-red-500"
                   >
                     <ArrowUpLeft className="w-4 h-4 mr-2" />
                     Withdraw
@@ -2189,15 +2207,15 @@ export default function OptionsTracker() {
 
               <TabsContent value="positions" className="space-y-6">
                 {/* Cost Basis Toggle */}
-                <Card>
+                <Card className="bg-gray-900/50 border-gray-800 shadow-lg backdrop-blur-sm">
                   <CardHeader className="pb-3">
                     <div className="flex justify-between items-center">
-                      <CardTitle className="text-lg">Positions Overview</CardTitle>
+                      <CardTitle className="text-lg text-white">Positions Overview</CardTitle>
                       <div className="flex items-center space-x-2">
-                        <Label htmlFor="includePremiums" className="text-sm">
+                        <Label htmlFor="includePremiums" className="text-sm text-gray-300">
                           Include Premiums
                         </Label>
-                        <Switch className="bg-destructive" id="includePremiums" checked={includePremiums} onCheckedChange={setIncludePremiums} />
+                        <Switch className="data-[state=checked]:bg-red-500" id="includePremiums" checked={includePremiums} onCheckedChange={setIncludePremiums} />
                       </div>
                     </div>
                   </CardHeader>
@@ -2208,35 +2226,35 @@ export default function OptionsTracker() {
                   {positions.map((position) => (
                     <Card
                       key={position.symbol}
-                      className={`hover:shadow-lg transition-all duration-300 ${animatingTrade ? "animate-pulse" : ""}`}
+                      className={`bg-gray-900/50 border-gray-800 shadow-lg backdrop-blur-sm hover:shadow-xl hover:border-gray-700 transition-all duration-300 ${animatingTrade ? "animate-pulse" : ""}`}
                     >
                       <CardHeader className="pb-3">
                         <div className="flex justify-between items-center">
-                          <CardTitle className="text-lg flex items-center gap-2">
+                          <CardTitle className="text-lg flex items-center gap-2 text-white">
                             {position.symbol}
-                            {position.shares > 0 && <Badge variant="outline">{position.shares} shares</Badge>}
+                            {position.shares > 0 && <Badge variant="outline" className="border-gray-600 text-gray-300">{position.shares} shares</Badge>}
                           </CardTitle>
                           <div className="text-right">
-                            <p className="text-sm text-muted-foreground">Current Price</p>
-                            <p className="font-semibold">{formatCurrency(position.currentPrice)}</p>
+                            <p className="text-sm text-gray-400">Current Price</p>
+                            <p className="font-semibold text-white">{formatCurrency(position.currentPrice)}</p>
                           </div>
                         </div>
                       </CardHeader>
                       <CardContent>
                         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
                           <div>
-                            <p className="text-sm text-muted-foreground">Original Cost Basis</p>
-                            <p className="font-semibold">{formatCurrency(position.originalCostBasis)}</p>
+                            <p className="text-sm text-gray-400">Original Cost Basis</p>
+                            <p className="font-semibold text-white">{formatCurrency(position.originalCostBasis)}</p>
                           </div>
                           <div>
-                            <p className="text-sm text-muted-foreground">Premiums Received</p>
-                            <p className="font-semibold text-green-600">+{formatCurrency(position.premiumsReceived)}</p>
+                            <p className="text-sm text-gray-400">Premiums Received</p>
+                            <p className="font-semibold text-green-400">+{formatCurrency(position.premiumsReceived)}</p>
                           </div>
                           <div>
-                            <p className="text-sm text-muted-foreground">
+                            <p className="text-sm text-gray-400">
                               {includePremiums ? "Adjusted" : "Current"} Cost Basis
                             </p>
-                            <p className="font-semibold">
+                            <p className="font-semibold text-white">
                               {formatCurrency(
                                 includePremiums
                                   ? position.avgCostBasis - position.premiumsReceived / Math.max(position.shares, 1)
@@ -2245,7 +2263,7 @@ export default function OptionsTracker() {
                             </p>
                           </div>
                           <div>
-                            <p className="text-sm text-muted-foreground">Total P/L</p>
+                            <p className="text-sm text-gray-400">Total P/L</p>
                             <p className={`font-semibold ${getPLColor(calculateTotalPL(position))}`}>
                               {calculateTotalPL(position) >= 0 ? "+" : ""}
                               {formatCurrency(calculateTotalPL(position))}
@@ -2253,7 +2271,7 @@ export default function OptionsTracker() {
                           </div>
                           {position.shares > 0 && (
                             <div>
-                              <p className="text-sm text-muted-foreground">Unrealized P&L</p>
+                              <p className="text-sm text-gray-400">Unrealized P&L</p>
                               <p className={`font-semibold ${getPLColor((position.currentPrice - position.avgCostBasis) * position.shares)}`}>
                                 {formatCurrency((position.currentPrice - position.avgCostBasis) * position.shares)}
                               </p>
@@ -2264,9 +2282,9 @@ export default function OptionsTracker() {
                         {position.openOptions.length > 0 && (
                           <div>
                             <div className="flex justify-between items-center mb-3">
-                              <h4 className="font-semibold">Open Options</h4>
+                              <h4 className="font-semibold text-white">Open Options</h4>
                               {position.openOptions.some((opt) => isExpiringWithin5Days(opt.expirationDate)) && (
-                                <Badge variant="destructive" className="text-xs bg-red-600">
+                                <Badge variant="destructive" className="text-xs bg-red-500 text-white">
                                   <AlertTriangle className="w-3 h-3 mr-1" />
                                   Expiring Soon
                                 </Badge>
@@ -2276,17 +2294,17 @@ export default function OptionsTracker() {
                               {position.openOptions.map((option) => (
                                 <div
                                   key={option.id}
-                                  className="flex justify-between items-center p-3 bg-secondary/50 rounded-lg hover:bg-secondary/70 transition-colors"
+                                  className="flex justify-between items-center p-3 bg-gray-800/50 rounded-lg hover:bg-gray-700/50 transition-colors border border-gray-700"
                                 >
                                   <div className="flex items-center gap-3">
-                                    <Badge variant="outline" className="text-xs bg-black text-white">
+                                    <Badge variant="outline" className="text-xs bg-red-500/20 text-red-400 border-red-500/50">
                                       {getContractDisplay(option)}
                                     </Badge>
                                     <div>
-                                      <span className="text-sm font-medium">
+                                      <span className="text-sm font-medium text-white">
                                         {formatTradeNomenclature(option)}
                                       </span>
-                                      {option.notes && <p className="text-xs text-muted-foreground">{option.notes}</p>}
+                                      {option.notes && <p className="text-xs text-gray-400">{option.notes}</p>}
                                     </div>
                                   </div>
                                   <div className="flex items-center gap-3">
@@ -2296,7 +2314,7 @@ export default function OptionsTracker() {
                                         {formatCurrency(option.premium)}
                                       </p>
                                       {option.expirationDate && (
-                                        <span className="text-xs text-muted-foreground flex items-center gap-1">
+                                        <span className="text-xs text-gray-400 flex items-center gap-1">
                                           <Calendar className="w-3 h-3" />
                                           {getRemainingDays(option.expirationDate)} days
                                         </span>
@@ -2306,7 +2324,7 @@ export default function OptionsTracker() {
                                       size="sm"
                                       variant="outline"
                                       onClick={() => setEditingTrade(option)}
-                                      className="border-black text-black hover:bg-gray-100"
+                                      className="border-gray-600 text-gray-300 hover:bg-gray-800 hover:text-white hover:border-red-500"
                                     >
                                       Manage
                                     </Button>
@@ -2323,29 +2341,29 @@ export default function OptionsTracker() {
               </TabsContent>
 
               <TabsContent value="trades" className="space-y-6">
-                <Card>
+                <Card className="bg-gray-900/50 border-gray-800 shadow-lg backdrop-blur-sm">
                   <CardHeader>
-                    <CardTitle>All Trades</CardTitle>
+                    <CardTitle className="text-white">All Trades</CardTitle>
                   </CardHeader>
                   <CardContent>
                     <div className="space-y-3">
                       {trades.map((trade) => (
                         <div
                           key={trade.id}
-                          className={`flex items-center justify-between p-4 border rounded-lg hover:bg-secondary/50 transition-all duration-300 cursor-pointer ${
-                            animatingTrade === trade.id ? "animate-pulse bg-green-50 dark:bg-green-950" : ""
+                          className={`flex items-center justify-between p-4 border border-gray-700 rounded-lg hover:bg-gray-800/50 hover:border-gray-600 transition-all duration-300 cursor-pointer ${
+                            animatingTrade === trade.id ? "animate-pulse bg-green-500/20 border-green-500/50" : ""
                           }`}
                           onClick={() => trade.type !== "Stock" && setEditingTrade(trade)}
                         >
                           <div className="flex items-center gap-4">
                             <Badge
                               variant={trade.side === "STO" ? "default" : "secondary"}
-                              className="min-w-[60px] justify-center text-white bg-black"
+                              className="min-w-[60px] justify-center text-white bg-red-500/20 border-red-500/50"
                             >
                               {trade.symbol === "CASH" ? "CASH" : (trade.type === "Stock" ? "STOCK" : trade.side)}
                             </Badge>
                             <div>
-                              <p className="font-semibold">
+                              <p className="font-semibold text-white">
                                 {trade.symbol === "CASH" ? (trade.side === "BTO" ? "DEPOSIT" : "WITHDRAWAL") : trade.symbol}
                                 {trade.type !== "Stock" && (
                                   <span className="ml-1">
@@ -2354,7 +2372,7 @@ export default function OptionsTracker() {
                                   </span>
                                 )}
                               </p>
-                              <p className="text-sm text-muted-foreground">
+                              <p className="text-sm text-gray-400">
                                 {getContractDisplay(trade)}{" "}
                                 {trade.symbol === "CASH" ? "dollars" : (trade.type === "Stock" ? "shares" : "contracts")}{" "}
                                 {trade.symbol !== "CASH" && (
@@ -2374,12 +2392,12 @@ export default function OptionsTracker() {
                             </p>
                             <div className="flex items-center gap-2">
                             {trade.symbol !== "CASH" && (
-                              <Badge variant="outline" className={`text-xs ${getStatusColor(trade.status)}`}>
+                              <Badge variant="outline" className={`text-xs border-gray-600 text-gray-300 ${getStatusColor(trade.status)}`}>
                                 {trade.status}
                               </Badge>
                             )}
                               {trade.expirationDate && (
-                                <span className="text-xs text-muted-foreground flex items-center gap-1">
+                                <span className="text-xs text-gray-400 flex items-center gap-1">
                                   <Calendar className="w-3 h-3" />
                                   {formatDate(trade.expirationDate)}
                                 </span>
